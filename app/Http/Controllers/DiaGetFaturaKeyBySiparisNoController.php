@@ -49,8 +49,9 @@ class DiaGetFaturaKeyBySiparisNoController extends Controller
 
         }elseif ($json['code'] == 200){
             $result = json_decode(base64_decode($json['result']),true);
-            $faturakey = $result['__rows'][0]['_key'];
-            return ['status'  => 'success', 'title'   => 'Basarili', 'message' => 'Fatura Key Alindi', 'response' => $faturakey];
+            $datas->faturakey  = $result['__rows'][0]['faturakey'];
+            $datas->sipariskey = $result['__rows'][0]['sipariskey'];
+            return ['status'  => 'success', 'title'   => 'Basarili', 'message' => 'Fatura Key Alindi', 'response' => $datas];
         }
         else{
             return ['status'  => 'error', 'title'   => 'Hata', 'message' => $json['msg'], 'response' => null];

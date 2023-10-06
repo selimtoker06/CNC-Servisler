@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DiaUpdateFaturaIptalBySiparisNoController extends Controller
@@ -21,7 +20,7 @@ class DiaUpdateFaturaIptalBySiparisNoController extends Controller
                 "session_id"    => $sessionid,
                 "firma_kodu"    => $firmakodu,
                 "donem_kodu"    => $donemkodu,
-                "key"           => (string)$faturaGetResponse['response'],
+                "key"           => (string)$faturaGetResponse['response']->faturakey,
                 "params"        => [
                     "bagliIrsaliyeIptal"    => "True",
                     "iptalNedeni"           => "Iptal"

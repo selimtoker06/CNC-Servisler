@@ -9,7 +9,6 @@ class DiaAddSiparisController extends Controller
 {
     /**DATA ICERIGI
      * .datatur
-     * .datadurum
      * .carikartkodu
      * .tarih
      * .saat
@@ -34,10 +33,7 @@ class DiaAddSiparisController extends Controller
      */
     private function validatePart($request){
         $state = 0000; $message = '';
-        if (!isset($request->datadurum)){
-            $message='DataDurum Alani Zorunludur';
-            $state = 0001;
-        }elseif (!isset($request->carikartkodu)){
+        if (!isset($request->carikartkodu)){
             $message='Carikartkodu Alani Zorunludur';
             $state = 0001;
         }elseif (!isset($request->tarih)){

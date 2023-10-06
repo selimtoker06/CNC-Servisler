@@ -61,12 +61,6 @@ class DiaAddSiparisFaturalandirController extends Controller
             else
                 return ['status' => 'error', 'title' => '', 'message' => 'Session Kimlik Hatasi', 'response' => false];
         }elseif ($json['code'] == 200){
-            if ($datas->datadurum==DataDurum::Iptal){
-                $datas->faturano = $json['extra']['islembelgeno'];
-                $faturaiptalstate = (new DiaUpdateFaturaIptalBySiparisNoController)->index($datas);
-                return ['status' => $faturaiptalstate['status'], 'title' => $faturaiptalstate['title'], 'message' => $faturaiptalstate['message'],
-                    'response' => $faturaiptalstate['response']];
-            }
             return ['status' => 'success', 'title' => 'Basarili', 'message' => 'Siparis Faturalandirildi.', 'response' => true];
         }else{
             return ['status'  => 'info', 'title'   => 'Dikkat', 'message' => $json['msg'], 'response' => null];

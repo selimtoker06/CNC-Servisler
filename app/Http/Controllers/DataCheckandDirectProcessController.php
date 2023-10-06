@@ -49,12 +49,13 @@ class DataCheckandDirectProcessController extends Controller
 
         if ($datas->datatur==DataTur::Siparis){
             $adddiastate = (new DiaAddSiparisController)->index($request);
+        }elseif ($datas->datatur==DataTur::Iptal){
+            $adddiastate = (new DiaUpdateFaturaIptalBySiparisNoController)->index($request);
         }elseif($datas->datatur==DataTur::Iade){
             $adddiastate = (new DiaAddIadeFaturasiController)->index($request);
         }else{
             return response()->json(['status'  => 'error', 'title'   => 'Hata', 'message' => 'DataTur Hatalidir. Lutfen Kontrol Ediniz', 'response' => false]);
         }
-
 
         return response()->json(['status'  => $adddiastate['status'], 'title'   => $adddiastate['title'], 'message' => $adddiastate['message'], 'response' => $adddiastate['response']]);
     }
